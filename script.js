@@ -236,13 +236,45 @@ card.innerHTML = `
 
     btn.onclick = async () => {
 
-        const confirmar = confirm(
-            `Deseja realmente reservar "${item}"?`
-        );
+      const modal =
+document.getElementById("modal");
 
-        if(!confirmar){
-            return;
+const textoModal =
+document.getElementById("texto-modal");
+
+const btnConfirmar =
+document.getElementById("confirmar");
+
+const btnCancelar =
+document.getElementById("cancelar");
+
+textoModal.textContent =
+`Deseja realmente reservar "${item}"?`;
+
+modal.style.display = "flex";
+
+btnCancelar.onclick = () => {
+
+    modal.style.display = "none";
+
+};
+
+btnConfirmar.onclick = async () => {
+
+    await updateDoc(
+        doc(db, "presentes", id),
+        {
+            reservado: true,
+            dataReserva: new Date()
+                .toLocaleDateString("pt-BR")
         }
+    );
+
+    modal.style.display = "none";
+
+    location.reload();
+
+};
 
     await updateDoc(
         doc(db, "presentes", id),
