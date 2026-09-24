@@ -73,7 +73,7 @@ const categorias = {
 "🍳 Cozinha":[
 "Jogo de panelas",
 "Frigideira antiaderente",
-"Air Fryer",
+"Panela de arroz elétrica",
 "Liquidificador",
 "Sanduicheira",
 "Cafeteira",
