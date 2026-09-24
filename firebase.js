@@ -1,6 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
+console.log("Firebase carregou");
+
 const firebaseConfig = {
   apiKey: "AIzaSyCTI7OEJCyOaR7M7YJALaWMshRR4v_AN7w",
   authDomain: "lista-casamento-gabriel-luana.firebaseapp.com",
