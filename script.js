@@ -4,9 +4,10 @@ import {
   collection,
   getDocs,
   doc,
-  updateDoc
+  updateDoc,
+  setDoc
 } 
-  from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 async function testarFirebase() {
 
@@ -27,6 +28,41 @@ async function testarFirebase() {
 }
 
 testarFirebase();
+
+cadastrarTodosPresentes();
+
+async function cadastrarTodosPresentes() {
+
+    for(let categoria in categorias){
+
+        for(let item of categorias[categoria]){
+
+            const id = item
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^\w\s-]/g, "")
+                .replace(/\s+/g, "-");
+
+            await setDoc(
+                doc(db, "presentes", id),
+                {
+                    nome: item,
+                    categoria: categoria,
+                    reservado: false
+                },
+                { merge: true }
+            );
+
+            console.log("Cadastrado:", item);
+
+        }
+
+    }
+
+    console.log("Todos os presentes foram cadastrados!");
+
+}
 
 async function reservarJogoPanelas() {
 
