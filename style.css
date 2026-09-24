@@ -618,6 +618,15 @@ footer{
 
 }
 
+#nome-reserva{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    box-sizing:border-box;
+}
+
 @media (max-width: 768px){
 
     .hero{
