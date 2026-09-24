@@ -295,6 +295,7 @@ atualizarProgresso();
 const btnPix =
 document.getElementById("btn-pix");
 
+console.log("Botão PIX:", btnPix);
 btnPix.onclick = async () => {
 
     const nome =
