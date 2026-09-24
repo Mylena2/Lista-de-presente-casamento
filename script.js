@@ -2,8 +2,11 @@ import { db } from "./firebase.js";
 
 import {
   collection,
-  getDocs
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+  getDocs,
+  doc,
+  updateDoc
+} 
+  from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 async function testarFirebase() {
 
@@ -24,6 +27,28 @@ async function testarFirebase() {
 }
 
 testarFirebase();
+
+async function reservarJogoPanelas() {
+
+    const referencia =
+    doc(
+        db,
+        "presentes",
+        "jogo-de-panelas"
+    );
+
+    await updateDoc(
+        referencia,
+        {
+            reservado: true
+        }
+    );
+
+    console.log(
+        "Jogo de panelas reservado!"
+    );
+
+}
 
 const categorias = {
 
