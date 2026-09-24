@@ -328,7 +328,16 @@ await atualizarProgresso();
 
 async function iniciarSite() {
 
-  try {
+    const timeout = setTimeout(() => {
+
+        console.log("Timeout atingido");
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("site").style.display = "block";
+
+    }, 3000); // 3 segundos
+
+    try {
 
         await carregarPresentes();
         await atualizarProgresso();
@@ -342,6 +351,8 @@ async function iniciarSite() {
     }
 
     finally {
+
+        clearTimeout(timeout);
 
         document.getElementById("loading").style.display = "none";
         document.getElementById("site").style.display = "block";
