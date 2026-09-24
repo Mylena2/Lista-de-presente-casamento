@@ -28,10 +28,6 @@ async function testarFirebase() {
 
 testarFirebase();
 
-console.log("Antes da reserva");
-
-reservarJogoPanelas();
-
 async function reservarJogoPanelas() {
 
     const referencia =
