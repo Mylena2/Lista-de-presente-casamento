@@ -62,29 +62,6 @@ async function cadastrarTodosPresentes() {
 
 }
 
-async function reservarJogoPanelas() {
-
-    const referencia =
-    doc(
-        db,
-        "presentes",
-        "jogo-de-panelas"
-    );
-
-    await updateDoc(
-        referencia,
-        {
-            reservado: true
-        }
-    );
-
-    console.log(
-      
-        "Jogo de panelas reservado!"
-    );
-
-}
-
 const categorias = {
 
 "🍳 Cozinha":[
