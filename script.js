@@ -269,4 +269,5 @@ card.innerHTML = `
     listas.appendChild(bloco);
 }
 
+  console.log("Categorias carregadas:", Object.keys(categorias).length);
   cadastrarTodosPresentes();
