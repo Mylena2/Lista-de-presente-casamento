@@ -302,8 +302,11 @@ btnConfirmar.onclick = async () => {
     listas.appendChild(bloco);
 
 }
-}
+  
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("site").style.display = "block";
 
+}
 carregarPresentes();
 atualizarProgresso();
 
