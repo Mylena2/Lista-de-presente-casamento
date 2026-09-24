@@ -267,7 +267,6 @@ card.innerHTML = `
     });
 
     listas.appendChild(bloco);
+}
 
   cadastrarTodosPresentes();
-
-}
