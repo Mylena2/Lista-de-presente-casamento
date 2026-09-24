@@ -276,21 +276,6 @@ btnConfirmar.onclick = async () => {
 
 };
 
-    await updateDoc(
-        doc(db, "presentes", id),
-        {
-            reservado: true,
-            dataReserva: new Date()
-                .toLocaleDateString("pt-BR")
-         }
-);
-
-    location.reload();
-
-    };
-
-}
-
         grid.appendChild(card);
 
     }
