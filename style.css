@@ -76,7 +76,7 @@ border-bottom:2px solid var(--gold);
 .titulo{
     font-family: 'Great Vibes', cursive;
 
-    font-size: 10rem;
+    font-size: clamp(4rem, 10vw, 8rem);
 
     color: #7B1E2B;
 
@@ -456,4 +456,49 @@ footer{
 
     margin-left:10px;
 
+}
+
+@media (max-width: 768px){
+
+    .hero{
+        padding: 40px 15px 25px;
+    }
+
+    .titulo{
+        font-size: 4rem;
+    }
+
+    .subtitulo{
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+    }
+
+    .hero h2{
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+
+    .mensagem{
+        font-size: 1.2rem;
+        max-width: 95%;
+    }
+
+    .linha span{
+        width: 80px;
+    }
+
+    .frase-lateral{
+        position: static;
+        transform: none;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+    }
+
+    .grid{
+        grid-template-columns: 1fr;
+    }
+
+    .foto-presente{
+        height: 200px;
+    }
 }
