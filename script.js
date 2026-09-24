@@ -148,11 +148,6 @@ async function carregarPresentes(){
         collection(db, "presentes")
     );
   
-    const snapshot =
-    await getDocs(
-        collection(db, "presentes")
-    );
-
     const presentesDB = {};
 
     snapshot.forEach((doc) => {
@@ -333,7 +328,7 @@ await atualizarProgresso();
 
 async function iniciarSite() {
 
-    try {
+  try {
 
         await carregarPresentes();
         await atualizarProgresso();
