@@ -270,4 +270,4 @@ card.innerHTML = `
 }
 
   console.log("Categorias carregadas:", Object.keys(categorias).length);
-  cadastrarTodosPresentes();
+  //cadastrarTodosPresentes();
