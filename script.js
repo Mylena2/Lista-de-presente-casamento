@@ -276,11 +276,15 @@ btnConfirmar.onclick = async () => {
 
 };
 
-        grid.appendChild(card);
+} 
+}
 
-    }
+    grid.appendChild(card);
+
+}
 
     listas.appendChild(bloco);
+
 }
 }
 
