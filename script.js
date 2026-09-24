@@ -29,8 +29,6 @@ async function testarFirebase() {
 
 testarFirebase();
 
-cadastrarTodosPresentes();
-
 async function cadastrarTodosPresentes() {
 
     for(let categoria in categorias){
@@ -269,5 +267,7 @@ card.innerHTML = `
     });
 
     listas.appendChild(bloco);
+
+  cadastrarTodosPresentes();
 
 }
