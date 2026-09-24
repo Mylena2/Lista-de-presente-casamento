@@ -458,7 +458,7 @@ footer{
 
 }
 
-@media (max-width: 768px){
+@media screen and (max-width: 768px){
 
     .hero{
         padding: 40px 15px 25px;
@@ -498,7 +498,6 @@ footer{
     .grid{
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    
     }
 
     .foto-presente{
