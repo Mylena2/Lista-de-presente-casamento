@@ -249,19 +249,19 @@ document.getElementById("confirmar");
 const btnCancelar =
 document.getElementById("cancelar");
 
+const campoNome =
+document.getElementById("nome-reserva");
+
 textoModal.textContent =
 `Deseja realmente reservar "${item}"?`;
-      campoNome.value = "";
+
+campoNome.value = "";
 
 modal.style.display = "flex";
 
 btnCancelar.onclick = () => {
 
     modal.style.display = "none";
-
-const campoNome =
-document.getElementById("nome-reserva");
-
 };
 
 btnConfirmar.onclick = async () => {
