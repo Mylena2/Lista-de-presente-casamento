@@ -140,7 +140,14 @@ const listas =
 document.getElementById("listas");
 
 async function carregarPresentes(){
+  
+  listas.innerHTML = "";
 
+    const snapshot =
+    await getDocs(
+        collection(db, "presentes")
+    );
+  
     const snapshot =
     await getDocs(
         collection(db, "presentes")
@@ -292,13 +299,23 @@ btnConfirmar.onclick = async () => {
             reservado: true,
             nomeReserva: nome,
             dataReserva: new Date()
-                .toLocaleDateString("pt-BR")
+            .toLocaleDateString("pt-BR")
         }
     );
 
-    modal.style.display = "none";
+  card.querySelector(".status").textContent =
+"🔒 Reservado";
 
-    location.reload();
+card.querySelector(".status").className =
+"status reservado";
+
+btn.textContent = "Reservado";
+btn.disabled = true;
+btn.className = "btn-reservado";
+
+modal.style.display = "none";
+
+await atualizarProgresso();
 
 };
 
@@ -312,22 +329,33 @@ btnConfirmar.onclick = async () => {
     listas.appendChild(bloco);
 
 }
+}
 
-try{
+async function iniciarSite() {
 
-    await carregarPresentes();
-    await atualizarProgresso();
+    try {
+
+        await carregarPresentes();
+        await atualizarProgresso();
+
+    }
+
+    catch (erro) {
+
+        console.error(erro);
+
+    }
+
+    finally {
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("site").style.display = "block";
+
+    }
 
 }
-finally{
 
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("site").style.display = "block";
-
-}
-}
-carregarPresentes();
-atualizarProgresso();
+iniciarSite();
 
 const btnPix =
 document.getElementById("btn-pix");
