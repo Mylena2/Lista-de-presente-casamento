@@ -5,8 +5,9 @@ import {
   getDocs,
   doc,
   updateDoc,
-  setDoc
-} 
+  setDoc,
+  getDoc
+}
 from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 async function testarFirebase() {
@@ -29,38 +30,6 @@ async function testarFirebase() {
 
 testarFirebase();
 
-async function cadastrarTodosPresentes() {
-
-    for(let categoria in categorias){
-
-        for(let item of categorias[categoria]){
-
-            const id = item
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .replace(/[^\w\s-]/g, "")
-                .replace(/\s+/g, "-");
-
-            await setDoc(
-                doc(db, "presentes", id),
-                {
-                    nome: item,
-                    categoria: categoria,
-                    reservado: false
-                },
-                { merge: true }
-            );
-
-            console.log("Cadastrado:", item);
-
-        }
-
-    }
-
-    console.log("Todos os presentes foram cadastrados!");
-
-}
 
 const categorias = {
 
@@ -132,7 +101,10 @@ const categorias = {
 const listas =
 document.getElementById("listas");
 
+async function carregarPresentes(){
+
 for(let categoria in categorias){
+
 
     const bloco =
     document.createElement("div");
@@ -148,18 +120,29 @@ for(let categoria in categorias){
     const grid =
     bloco.querySelector(".grid");
 
-    categorias[categoria].forEach(item => {
+  for (const item of categorias[categoria]) {
 
         const card =
         document.createElement("div");
 
         card.className = "card";
 
-       const reservaSalva =
-JSON.parse(localStorage.getItem(item));
+const id = item
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
+
+const documento =
+await getDoc(
+    doc(db, "presentes", id)
+);
+
+const dados = documento.data();
 
 const reservado =
-reservaSalva?.reservado || false;
+dados?.reservado || false;
 
 card.innerHTML = `
     <h3>${item}</h3>
@@ -183,7 +166,7 @@ card.innerHTML = `
         ?
         `<p class="data-reserva">
             📅 Reservado em:
-            ${reservaSalva.data}
+            ${dados?.dataReserva || ""}
         </p>`
         :
         ""
@@ -214,7 +197,7 @@ card.innerHTML = `
 
     if(!reservado){
 
-    btn.onclick = () => {
+    btn.onclick = async () => {
 
         const confirmar = confirm(
             `Deseja realmente reservar "${item}"?`
@@ -224,16 +207,16 @@ card.innerHTML = `
             return;
         }
 
-        localStorage.setItem(
-            item,
-            JSON.stringify({
-                reservado:true,
-                data:new Date()
-                    .toLocaleDateString("pt-BR")
-            })
-        );
+    await updateDoc(
+        doc(db, "presentes", id),
+        {
+            reservado: true,
+            dataReserva: new Date()
+                .toLocaleDateString("pt-BR")
+         }
+);
 
-        location.reload();
+    location.reload();
 
     };
 
@@ -241,10 +224,13 @@ card.innerHTML = `
 
         grid.appendChild(card);
 
-    });
+    }
 
     listas.appendChild(bloco);
 }
+}
+
+carregarPresentes();
 
   console.log("Categorias carregadas:", Object.keys(categorias).length);
-  //cadastrarTodosPresentes();
+  //cadastrarTodosPresentes()
