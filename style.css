@@ -505,17 +505,23 @@ footer{
 }
 
 .modal-box{
+
     background:white;
 
-    padding:30px;
+    padding:35px;
 
-    border-radius:20px;
+    border-radius:25px;
 
     width:90%;
 
     max-width:420px;
 
     text-align:center;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.15);
+
+    border:1px solid #ead3c2;
 }
 
 .modal-botoes{
@@ -530,6 +536,54 @@ footer{
     border:none;
     border-radius:10px;
     cursor:pointer;
+}
+
+.modal-box h3{
+
+    color:#7B1E2B;
+
+    margin-top:0;
+
+    font-size:1.8rem;
+}
+
+.modal-box p{
+
+    color:#555;
+
+    font-size:1rem;
+
+    line-height:1.6;
+}
+
+#cancelar{
+
+    background:#eeeeee;
+
+    color:#555;
+}
+
+#confirmar{
+
+    background:linear-gradient(
+        90deg,
+        #B8860B,
+        #D4AF37
+    );
+
+    color:white;
+}
+
+#confirmar:hover{
+
+    transform:translateY(-2px);
+
+}
+
+#cancelar:hover{
+
+    background:#dddddd;
+
 }
 
 @media (max-width: 768px){
