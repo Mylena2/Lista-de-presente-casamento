@@ -160,19 +160,53 @@ padding:30px;
 }
 
 .card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
 
-background:white;
+    border:1px solid rgba(212,175,55,.3);
 
-padding:20px;
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.06);
 
-border-radius:20px;
+    transition:.3s ease;
 
-border:1px solid #ead3c2;
+    position:relative;
 
-box-shadow:
-0 10px 25px rgba(0,0,0,.06);
-
+    overflow:hidden;
 }
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:4px;
+
+    background:linear-gradient(
+        90deg,
+        #D4AF37,
+        #F3D78C
+    );
+}
+
+.card:hover{
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,.12);
+}
+
+.card h3{
+    font-size:1.2rem;
+    color:#7B1E2B;
+    margin-bottom:15px;
+}
+
+
 
 .categoria{
 
@@ -205,31 +239,21 @@ box-shadow:
 }
 
 .status{
-
     display:inline-block;
-
-    margin-top:10px;
-
-    margin-bottom:15px;
-
-    padding:6px 12px;
-
-    border-radius:20px;
-
+    padding:8px 14px;
+    border-radius:30px;
     font-size:.9rem;
-
+    font-weight:bold;
 }
 
 .disponivel{
-
-    background:#E8F8EC;
-
-    color:#1C7C3A;
-
+    background:#EAF8EC;
+    color:#1F7A35;
 }
 
 
 .btn-reservar{
+    margin-top:20px;
 
     width:100%;
 
@@ -237,16 +261,25 @@ box-shadow:
 
     padding:12px;
 
-    border-radius:10px;
+    border-radius:12px;
 
     cursor:pointer;
 
-    background:var(--marsala);
+    background:linear-gradient(
+        90deg,
+        #B8860B,
+        #D4AF37
+    );
 
     color:white;
 
-    font-size:1rem;
+    font-weight:bold;
 
+    transition:.3s;
+}
+
+.btn-reservar:hover{
+    transform:scale(1.03);
 }
 
 .contribuicoes{
@@ -343,11 +376,8 @@ border-radius:10px;
 }
 
 .reservado{
-
-    background:#F5D7DB;
-
+    background:#F7E9EA;
     color:#7B1E2B;
-
 }
 
 .btn-reservado{
