@@ -72,39 +72,61 @@ Lista de Presentes de Casamento - Gabriel & Luana
 
 <div class="contribuicoes">
 
-<h2>💰 Contribuições</h2>
+<h2>💝 Presente via Pix</h2>
+
+<p class="texto-pix">
+    Não encontrou o presente ideal? <br>
+
+    Você também pode nos presentear através
+    de uma contribuição via Pix 💝
+</p>
 
 <div class="pix-box">
 
 <div class="qr">
-
-SEU QR CODE PIX
-
+  <img
+        src="images/qr-code-luana.jpeg"
+        alt="QR Code Pix"
+        class="qr-img"
+    >
 </div>
 
 <div class="pix-info">
 
-<p>
-<strong>Chave Pix:</strong>
-</p>
+<p><strong>Chave Pix:</strong></p>
 
-<input
-type="text"
-value="SUA_CHAVE_PIX"
-readonly>
+<div class="info-fixa">
+    (94) 99213-9199
+</div>
 
-<p>
-<strong>
-Valor enviado (opcional)
-</strong>
-</p>
+<p><strong>Nome:</strong></p>
 
-<input
-type="number"
-placeholder="R$">
+<div class="info-fixa">
+    Luana Oliveira de Sousa
+</div>
 
-<button class="btn-reservar">
-Registrar contribuição
+<p><strong>Informe seu nome:</strong></p>
+
+    <input
+        type="text"
+        id="nome-pix"
+        placeholder="Seu nome"
+    >
+
+    <p><strong>Valor enviado (opcional)</strong></p>
+
+    <input
+        type="number"
+        id="valor-pix"
+        placeholder="R$"
+    >
+
+
+<button
+    class="btn-reservar"
+    id="btn-pix"
+>
+    Registrar contribuição
 </button>
 
 </div>

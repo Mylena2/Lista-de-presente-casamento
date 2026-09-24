@@ -6,7 +6,8 @@ import {
   doc,
   updateDoc,
   setDoc,
-  getDoc
+  getDoc,
+  addDoc
 }
 from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
@@ -290,6 +291,84 @@ btnConfirmar.onclick = async () => {
 
 carregarPresentes();
 atualizarProgresso();
+
+const btnPix =
+document.getElementById("btn-pix");
+
+btnPix.onclick = async () => {
+
+    const nome =
+    document
+    .getElementById("nome-pix")
+    .value
+    .trim();
+
+    const valor =
+    document
+    .getElementById("valor-pix")
+    .value;
+
+    if(nome === ""){
+
+        alert(
+            "Informe seu nome."
+        );
+
+        return;
+    }
+
+    try{
+
+        await addDoc(
+            collection(
+                db,
+                "contribuicoes"
+            ),
+            {
+                nome: nome,
+
+                valor:
+                valor || "Não informado",
+
+                data:
+                new Date()
+                .toLocaleDateString(
+                    "pt-BR"
+                ),
+
+                hora:
+                new Date()
+                .toLocaleTimeString(
+                    "pt-BR"
+                )
+            }
+        );
+
+        alert(
+            "Contribuição registrada com sucesso!"
+        );
+
+        document
+        .getElementById("nome-pix")
+        .value = "";
+
+        document
+        .getElementById("valor-pix")
+        .value = "";
+
+    }
+
+    catch(erro){
+
+        console.error(erro);
+
+        alert(
+            "Erro ao registrar contribuição."
+        );
+
+    }
+
+};
 
   console.log("Categorias carregadas:", Object.keys(categorias).length);
   //cadastrarTodosPresentes()
