@@ -266,10 +266,21 @@ document.getElementById("nome-reserva");
 
 btnConfirmar.onclick = async () => {
 
+    const nome =
+    campoNome.value.trim();
+
+    if(nome === ""){
+
+        alert("Informe seu nome.");
+
+        return;
+    }
+
     await updateDoc(
         doc(db, "presentes", id),
         {
             reservado: true,
+            nomeReserva: nome,
             dataReserva: new Date()
                 .toLocaleDateString("pt-BR")
         }
