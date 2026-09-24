@@ -631,6 +631,18 @@ footer{
     display:none;
 }
 
+#loading{
+    position:fixed;
+    inset:0;
+    background:#F8F1EA;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    color:#7B1E2B;
+    font-size:1.8rem;
+}
+
 @media (max-width: 768px){
 
     .hero{
