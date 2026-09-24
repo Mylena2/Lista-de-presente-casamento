@@ -488,6 +488,50 @@ footer{
 
 }
 
+.modal{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+}
+
+.modal-box{
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    width:90%;
+
+    max-width:420px;
+
+    text-align:center;
+}
+
+.modal-botoes{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.modal-botoes button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
 @media (max-width: 768px){
 
     .hero{
