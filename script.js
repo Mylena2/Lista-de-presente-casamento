@@ -141,46 +141,56 @@ document.getElementById("listas");
 
 async function carregarPresentes(){
 
-for(let categoria in categorias){
+    const snapshot =
+    await getDocs(
+        collection(db, "presentes")
+    );
 
+    const presentesDB = {};
 
-    const bloco =
-    document.createElement("div");
+    snapshot.forEach((doc) => {
 
-    bloco.className =
-    "categoria";
+        presentesDB[doc.id] =
+        doc.data();
 
-    bloco.innerHTML = `
-        <h2>${categoria}</h2>
-        <div class="grid"></div>
-    `;
+    });
 
-    const grid =
-    bloco.querySelector(".grid");
+    for(let categoria in categorias){
 
-  for (const item of categorias[categoria]) {
-
-        const card =
+        const bloco =
         document.createElement("div");
 
-        card.className = "card";
+        bloco.className =
+        "categoria";
 
-const id = item
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-");
+        bloco.innerHTML = `
+            <h2>${categoria}</h2>
+            <div class="grid"></div>
+        `;
 
-const documento =
-await getDoc(
-    doc(db, "presentes", id)
-);
+        const grid =
+        bloco.querySelector(".grid");
 
-const dados = documento.data();
+        for(const item of categorias[categoria]){
 
-const reservado =
-dados?.reservado || false;
+            const card =
+            document.createElement("div");
+
+            card.className = "card";
+
+            const id = item
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^\w\s-]/g, "")
+                .replace(/\s+/g, "-");
+
+            const dados =
+            presentesDB[id];
+
+            const reservado =
+            dados?.reservado || false;
+
 
 card.innerHTML = `
     <h3>${item}</h3>
@@ -302,10 +312,13 @@ btnConfirmar.onclick = async () => {
     listas.appendChild(bloco);
 
 }
-  
-  document.getElementById("loading").style.display = "none";
-  document.getElementById("site").style.display = "block";
 
+setTimeout(() => {
+
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("site").style.display = "block";
+
+}, 3000);
 }
 carregarPresentes();
 atualizarProgresso();
