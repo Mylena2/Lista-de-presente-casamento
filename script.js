@@ -1,3 +1,29 @@
+import { db } from "./firebase.js";
+
+import {
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+async function testarFirebase() {
+
+    const snapshot =
+    await getDocs(
+        collection(db, "presentes")
+    );
+
+    snapshot.forEach((doc) => {
+
+        console.log(
+            doc.id,
+            doc.data()
+        );
+
+    });
+
+}
+
+testarFirebase();
+
 const categorias = {
 
 "🍳 Cozinha":[
