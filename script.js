@@ -313,12 +313,18 @@ btnConfirmar.onclick = async () => {
 
 }
 
-setTimeout(() => {
+try{
+
+    await carregarPresentes();
+    await atualizarProgresso();
+
+}
+finally{
 
     document.getElementById("loading").style.display = "none";
     document.getElementById("site").style.display = "block";
 
-}, 3000);
+}
 }
 carregarPresentes();
 atualizarProgresso();
