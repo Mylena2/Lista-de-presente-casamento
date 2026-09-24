@@ -30,6 +30,43 @@ async function testarFirebase() {
 
 testarFirebase();
 
+async function atualizarProgresso(){
+
+    const snapshot =
+    await getDocs(
+        collection(db, "presentes")
+    );
+
+    let total = 0;
+    let reservados = 0;
+
+    snapshot.forEach((doc) => {
+
+        total++;
+
+        if(doc.data().reservado){
+            reservados++;
+        }
+
+    });
+
+    const percentual =
+    Math.round(
+        (reservados / total) * 100
+    );
+
+    document.getElementById("total")
+        .textContent = total;
+
+    document.getElementById("reservados")
+        .textContent = reservados;
+
+    document.getElementById("percentual")
+        .textContent = percentual + "%";
+
+    document.getElementById("barra-progresso")
+        .style.width = percentual + "%";
+}
 
 const categorias = {
 
@@ -231,6 +268,7 @@ card.innerHTML = `
 }
 
 carregarPresentes();
+atualizarProgresso();
 
   console.log("Categorias carregadas:", Object.keys(categorias).length);
   //cadastrarTodosPresentes()
